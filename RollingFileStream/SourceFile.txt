@@ -1,0 +1,154 @@
+Name: Install Driver Test Components
+  Path: C:\Users\User\AppData\Roaming\Microsoft\WDKTestInfrastructure\InfrastructureTaskGroups\Install Driver Test Components.xml
+  Target Computer: TestComputer
+Install Driver Test Components: Host Computer: WIN-COJR9J0Q3TG
+Install Driver Test Components: Host Architecture: x86
+Install Driver Test Components: Host 64bit Operating System: True
+Install Driver Test Components: Host Operating System Version: 10.0.17134.0
+Install Driver Test Components: Process Administrator Privilege: False
+Progress event: Current: 1, Max: 12, Message: ""
+Progress event: Current: 1, Max: 12, Message: "Copying required files"
+[15:59:18:577]: Copying required files
+Task result status updated: Pass
+[15:59:22:539]: Task "Copying required files" completed successfully
+Progress event: Current: 1, Max: 12, Message: "    Task "Copying required files" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 2, Max: 12, Message: "Configuring WDK Remote User Account"
+[15:59:22:578]: Configuring WDK Remote User Account
+Task result status updated: Pass
+[15:59:22:614]: Task "Configuring WDK Remote User Account" completed successfully
+Progress event: Current: 2, Max: 12, Message: "    Task "Configuring WDK Remote User Account" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 3, Max: 12, Message: "Installing .NET Framework (possible reboot)"
+[15:59:22:626]: Installing .NET Framework (possible reboot)
+[15:59:22:629]: [Installing .NET Framework (possible reboot)] Command Line:
+%SystemDrive%\DriverTest\Setup\dotNetFx40_Full_x86_x64.exe /q /norestart /log %SystemDrive%\DriverTest\Logs\DotNetInstall.log
+Result file "%SystemDrive%\DriverTest\Logs\DotNetInstall*.log" could not be retrieved from the target machine. Error: An error occurred on the target machine while retrieving a file.
+Error code: 3
+Error message: Unable to open file 'C:\DriverTest\Logs\DotNetInstall*.log'.
+Result file "%SystemDrive%\DriverTest\Logs\DotNetInstall*.html" could not be retrieved from the target machine. Error: An error occurred on the target machine while retrieving a file.
+Error code: 3
+Error message: Unable to open file 'C:\DriverTest\Logs\DotNetInstall*.html'.
+Task result status updated: Fail
+Task result status updated: Fail
+[15:59:49:817]: ERROR: Task "Installing .NET Framework (possible reboot)" failed to complete successfully. Look at the logs in the driver test group explorer for more details on the failure.
+Progress event: Current: 3, Max: 12, Message: "    ERROR: Task "Installing .NET Framework (possible reboot)" failed to complete successfully. Look at the logs in the driver test group explorer for more details on the failure."
+Result completed
+Test process exit code: 1603
+Progress event: Current: 4, Max: 12, Message: "Installing VC Redist (x86)"
+[15:59:49:829]: Installing VC Redist (x86)
+[15:59:49:829]: [Installing VC Redist (x86)] Command Line:
+%SystemDrive%\DriverTest\Setup\x86\vcredist_x86.exe /q /log %SystemDrive%\DriverTest\Logs\vcredist_x86.log
+Task result status updated: Pass
+Task result status updated: Pass
+[15:59:56:514]: Task "Installing VC Redist (x86)" completed successfully
+Progress event: Current: 4, Max: 12, Message: "    Task "Installing VC Redist (x86)" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 5, Max: 12, Message: "Installing test automation (x86)"
+[15:59:56:532]: Installing test automation (x86)
+[15:59:56:532]: [Installing test automation (x86)] Command Line:
+msiexec.exe /i "%SystemDrive%\DriverTest\Setup\Test Authoring and Execution Framework x86-x86_en-us.msi" /qb- KITSROOT="%ProgramFiles%\Windows Kits\10" KITTARGET=1 /l*v "%SystemDrive%\DriverTest\Logs\Test Authoring and Execution Framework x86-x86_en-us.msi_install.log"
+Task result status updated: Pass
+Task result status updated: Pass
+[16:00:02:473]: Task "Installing test automation (x86)" completed successfully
+Progress event: Current: 5, Max: 12, Message: "    Task "Installing test automation (x86)" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 6, Max: 12, Message: "Installing debuggers (x86)"
+[16:00:02:486]: Installing debuggers (x86)
+[16:00:02:486]: [Installing debuggers (x86)] Command Line:
+msiexec.exe /i "%SystemDrive%\DriverTest\Setup\x86 Debuggers And Tools-x86_en-us.msi" /qb- /l*v "%SystemDrive%\DriverTest\Logs\x86 Debuggers And Tools-x86_en-us.msi_install.log"
+Task result status updated: Pass
+Task result status updated: Pass
+[16:00:09:914]: Task "Installing debuggers (x86)" completed successfully
+Progress event: Current: 6, Max: 12, Message: "    Task "Installing debuggers (x86)" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 7, Max: 12, Message: "Installing driver test framework"
+[16:00:09:929]: Installing driver test framework
+[16:00:09:929]: [Installing driver test framework] Command Line:
+msiexec.exe /i "%SystemDrive%\DriverTest\Setup\Windows Driver Testing Framework (WDTF) Runtime Libraries-x86_en-us.msi" /qb- KITTARGET=1 /l*v "%SystemDrive%\DriverTest\Logs\Windows Driver Testing Framework (WDTF) Runtime Libraries-x86_en-us.msi_install.log"
+Result file "%SystemDrive%\WDTFInstallText.log" could not be retrieved from the target machine. Error: An error occurred on the target machine while retrieving a file.
+Error code: 2
+Error message: Unable to open file 'C:\WDTFInstallText.log'.
+Task result status updated: Fail
+Task result status updated: Fail
+[16:00:15:843]: ERROR: Task "Installing driver test framework" failed to complete successfully. Look at the logs in the driver test group explorer for more details on the failure.
+Progress event: Current: 7, Max: 12, Message: "    ERROR: Task "Installing driver test framework" failed to complete successfully. Look at the logs in the driver test group explorer for more details on the failure."
+Result completed
+Test process exit code: 1603
+Progress event: Current: 8, Max: 12, Message: "Registering logging components"
+[16:00:15:860]: Registering logging components
+[16:00:15:860]: [Registering logging components] Command Line:
+regsvr32.exe /s %SystemDrive%\DriverTest\WTTLogcm.dll
+Task result status updated: Pass
+Task result status updated: Pass
+[16:00:15:963]: Task "Registering logging components" completed successfully
+Progress event: Current: 8, Max: 12, Message: "    Task "Registering logging components" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 9, Max: 12, Message: "Configuring TAEF test service to start automatically"
+[16:00:15:978]: Configuring TAEF test service to start automatically
+[16:00:15:978]: [Configuring TAEF test service to start automatically] Command Line:
+sc config Te.Service start= auto
+Task result status updated: Fail
+Task result status updated: Fail
+[16:00:16:095]: ERROR: Task "Configuring TAEF test service to start automatically" failed to complete successfully. Look at the logs in the driver test group explorer for more details on the failure.
+Progress event: Current: 9, Max: 12, Message: "    ERROR: Task "Configuring TAEF test service to start automatically" failed to complete successfully. Look at the logs in the driver test group explorer for more details on the failure."
+Result completed
+Test process exit code: 1060
+Progress event: Current: 10, Max: 12, Message: "Configuring kernel debugger settings (possible reboot)"
+[16:00:16:113]: Configuring kernel debugger settings (possible reboot)
+[16:00:16:118]: Removing any existing files from test execution folder.
+[16:00:16:134]: Copying required files for "Configuring kernel debugger settings (possible reboot)".
+[16:00:16:328]: [Configuring kernel debugger settings (possible reboot)] Command Line:
+$KitRoot$\Testing\Runtimes\TAEF\te.exe "%SystemDrive%\DriverTest\Run\DriverTestTasks_downlevel.dll" /select:"@Name='DriverTestTasks::_ConfigureKernelDebugger'" /p:"DebugTransport=SERIAL" /p:"SerialPortNumber=2" /p:"BaudRate=115200" /p:"StartPolicy=Active" /p:"IgnoreUserModeExceptions=0" /p:"SuppressReboot=1" /rebootStateFile:%SystemDrive%\DriverTest\Run\DriverTestReboot.xml /enableWttLogging /wttDeviceString:$LogFile:file="%SystemDrive%\DriverTest\Run\Configuring_kernel_debugger_settings_(possible_reboot)_00000.wtl",writemode=append,encoding=unicode,nofscache=true,EnableLvl="WexStartTest|WexEndTest|WexXml|WexProperty|WexCreateContext|WexCloseContext|*" /runas:Elevated
+Result file "%SystemDrive%\DriverTest\Run\Configuring_kernel_debugger_settings_(possible_reboot)_00000.wtl.trace" could not be retrieved from the target machine. Error: An error occurred on the target machine while retrieving a file.
+Error code: 2
+Error message: Unable to open file 'C:\DriverTest\Run\Configuring_kernel_debugger_settings_(possible_reboot)_00000.wtl.trace'.
+[16:00:17:507]: Result Summary: Total=1, Passed=1, Failed=0, Blocked=0, Warned=0, Skipped=0
+Task result status updated: Pass
+Task result status updated: Pass
+[16:00:17:508]: Task "Configuring kernel debugger settings (possible reboot)" completed successfully
+Progress event: Current: 10, Max: 12, Message: "    Task "Configuring kernel debugger settings (possible reboot)" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 11, Max: 12, Message: "Configuring computer settings (possible reboot)"
+[16:00:18:122]: Configuring computer settings (possible reboot)
+[16:00:18:122]: Removing any existing files from test execution folder.
+[16:00:18:129]: Copying required files for "Configuring computer settings (possible reboot)".
+[16:00:18:255]: [Configuring computer settings (possible reboot)] Command Line:
+$KitRoot$\Testing\Runtimes\TAEF\te.exe "%SystemDrive%\DriverTest\Run\DriverTestTasks_downlevel.dll" /select:"@Name='DriverTestTasks::_ConfigureCommonSettings'" /p:"OsSkuType=0" /rebootStateFile:%SystemDrive%\DriverTest\Run\DriverTestReboot.xml /enableWttLogging /wttDeviceString:$LogFile:file="%SystemDrive%\DriverTest\Run\Configuring_computer_settings_(possible_reboot)_00000.wtl",writemode=append,encoding=unicode,nofscache=true,EnableLvl="WexStartTest|WexEndTest|WexXml|WexProperty|WexCreateContext|WexCloseContext|*" /runas:Elevated
+Waiting for task to complete...
+Progress event: Current: 11, Max: 12, Message: "Waiting for task to complete..."
+Communication error occured while monitoring test. Ignoring error. An error occurred while connecting from the remote machine.
+Error: 10060 (TimedOut)
+Error message: Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера 192.168.0.103:50005
+Communication error occured while monitoring test. Ignoring error. An error occurred while connecting from the remote machine.
+Error: 10060 (TimedOut)
+Error message: Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера 192.168.0.103:50005
+Result file "%SystemDrive%\DriverTest\Run\Configuring_computer_settings_(possible_reboot)_00000.wtl.trace" could not be retrieved from the target machine. Error: An error occurred on the target machine while retrieving a file.
+Error code: 2
+Error message: Unable to open file 'C:\DriverTest\Run\Configuring_computer_settings_(possible_reboot)_00000.wtl.trace'.
+[16:01:55:556]: Result Summary: Total=2, Passed=1, Failed=0, Blocked=1, Warned=0, Skipped=0
+Task result status updated: Pass
+Task result status updated: Pass
+[16:01:55:558]: Task "Configuring computer settings (possible reboot)" completed successfully
+Progress event: Current: 11, Max: 12, Message: "    Task "Configuring computer settings (possible reboot)" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 12, Max: 12, Message: "Creating system restore point"
+[16:01:55:953]: Creating system restore point
+[16:01:55:953]: [Creating system restore point] Command Line:
+cscript.exe %SystemDrive%\DriverTest\Setup\CreateRestore.js
+Task result status updated: Pass
+Task result status updated: Pass
+[16:02:02:331]: Task "Creating system restore point" completed successfully
+Progress event: Current: 12, Max: 12, Message: "    Task "Creating system restore point" completed successfully"
+Result completed
+Test process exit code: 0
+Progress event: Current: 12, Max: 12, Message: ""
+Progress event: Current: 12, Max: 12, Message: "Computer configuration log file://C:/Users/User/AppData/Roaming/Microsoft/WDKTestInfrastructure/ProvisioningLogs/Driver%20Test%20Computer%20Configuration%2020190314155918490.log"
