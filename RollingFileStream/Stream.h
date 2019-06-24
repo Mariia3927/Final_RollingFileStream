@@ -14,16 +14,15 @@ public:
 class FileStream : public IStream
 {
 public:
-	explicit FileStream(std::string path);
-	~FileStream();
+	explicit FileStream(const std::string& path);
 
 	bool Write(const char* buffer, int blockSize) override;
 
-	bool CreatedSuccessfully() { return m_Flag; }
+	bool CreatedSuccessfully() { return m_flag; }
 
 private:
-	std::ofstream m_Fout;
-	bool m_Flag = true;
+	std::ofstream m_fout;
+	bool m_flag = true;
 };
 
 
@@ -33,15 +32,13 @@ private:
 class IStreamFactory 
 {
 public:
-	virtual IStream* Create(std::string path) = 0;
-	virtual void Delete(IStream* object) = 0;
+	virtual std::unique_ptr<IStream> Create(const std::string& path) = 0;
 };
 
 class FileSystem : public IStreamFactory
 {
 public:
-	IStream* Create(std::string path) override;
-	void Delete(IStream* object) override;
+	std::unique_ptr<IStream> Create(const std::string& path) override;
 };
 
 
@@ -53,14 +50,19 @@ class RollingFileStream
 public:
 	RollingFileStream(std::string fileName, int maxFileSize, int maxFilesNumber, IStreamFactory& factory);
 
-	bool Write(const char* buffer, int numberOfBytes);
+	int Write(const char* buffer, int numberOfBytes);
 
 private:
-	std::string m_FileName;
-	int m_MaxFileSize;
-	int m_MaxFilesNumber;
-	IStreamFactory& m_Factory;
-	IStream* m_Stream;
-	int m_FirstFileIndex = 0;
+	int CalculateNumberOfFiles(int numberOfBytes, bool& lastFileNotFullSize);
+	std::unique_ptr<IStream> CreateFile(const std::string& path, int& currentFileIndex, int& currentFilesNumber);
+	void RemoveFirstFile();
+
+private:
+	std::string m_fileName;
+	int m_maxFileSize;
+	int m_maxFilesNumber;
+	IStreamFactory& m_factory;
+	std::unique_ptr<IStream> m_stream;
+	int m_firstFileIndex = 0;
 };
 
